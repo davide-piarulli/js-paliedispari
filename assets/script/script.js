@@ -43,7 +43,7 @@ btn2.addEventListener('click', function(){
     }else{
       alert('NON hai scritto pari o dispari!');
     }
-  }
+  };
   
   while (!validNumber) {
     numGiocatore = parseInt(prompt('Scrivi un numero da 1 a 5'));
@@ -56,23 +56,44 @@ btn2.addEventListener('click', function(){
     }else{
       alert('Hai inserito una stringa invece che un numero');
     }
+  };
+  
+  // funzione per il numero casuale del PC
+  function numRandom() {
+    // Genera un numero casuale compreso tra 1 e 5
+    return Math.floor(Math.random() * 5) + 1;
+  };
+  
+  let somma = numGiocatore + numPc;
+  // funzione per la somma
+  function sommaNum(numA, numB) {
+    let somma = numA + numB;
+
+    if (somma % 2 === 0){
+      somma = 'pari';
+    } else {
+      somma = 'dispari';
+    }
+
+    return somma;
   }
+  
+  let resultNumber = sommaNum(numGiocatore, numPc);
+
+  if (resultNumber === numGiocatore) {
+    result = 'Hai vinto!';
+  } else{
+    result = 'Hai perso!';
+  }
+  
+  
+  
   document.getElementById('outputparidisp').innerHTML = 
   `
   Hai scelto: ${pariDispari} <br>
   Il tuo numero è: ${numGiocatore} <br>
   Il numero random del PC è: ${numPc} <br>
+  La somma è: ${somma} <br>
+  ${result} <br>
   `;
-
-  // funzione per il numero casuale del PC
-  function numRandom() {
-    // Genera un numero casuale compreso tra 1 e 5
-    return Math.floor(Math.random() * 5) + 1;
-  }
-
-  // function somma ()
-
-
-
-
 })
